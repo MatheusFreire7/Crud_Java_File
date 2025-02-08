@@ -20,13 +20,32 @@ src/
 ├── PessoaMapper.java
 ├── CPFUtils.java
 ├── EmailUtils.java
+├── CRUD.java
+├── EntityMapper.java
+
 
 - **CRUDApp.java**: Contém a lógica principal do aplicativo, incluindo o menu interativo.
-- **FileRepository.java**: Responsável por gerenciar a leitura e escrita de dados no arquivo `pessoas.txt`.
+- **FileRepository.java**: Implementa a interface `CRUD` e gerencia a leitura e escrita de dados no arquivo `pessoas.txt`.
 - **Pessoa.java**: Representa a entidade Pessoa com seus atributos (ID, Nome, Idade, CPF, Email).
-- **PessoaMapper.java**: Responsável por mapear objetos `Pessoa` para strings e vice-versa.
+- **PessoaMapper.java**: Implementa a interface `EntityMapper` e é responsável por mapear objetos `Pessoa` para strings e vice-versa.
 - **CPFUtils.java**: Contém métodos para validar e formatar CPF.
 - **EmailUtils.java**: Contém métodos para validar e-mails.
+- **CRUD.java**: Interface que define as operações básicas de CRUD.
+- **EntityMapper.java**: Interface que define métodos para mapear entidades a partir de strings e obter o CPF de uma entidade.
+
+## Interfaces
+
+### `CRUD<T>`
+Define as operações básicas de CRUD:
+- `void criar(T obj)`: Cria um novo objeto no repositório.
+- `List<T> ler()`: Retorna uma lista de todos os objetos armazenados.
+- `void atualizar(String cpf, T obj)`: Atualiza um objeto existente com base no CPF.
+- `void deletar(String cpf)`: Remove um objeto com base no CPF.
+
+### `EntityMapper<T>`
+Define métodos para mapeamento de entidades:
+- `T fromString(String data)`: Converte uma string em um objeto do tipo `T`.
+- `String getCpf(T obj)`: Retorna o CPF de um objeto do tipo `T`.
 
 ## Como Executar
 
